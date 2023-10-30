@@ -5,114 +5,169 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <>
+    <div className="hero" id="home">
+      <nav>
+        <h2 className="logo">
+          Convert<span>ify</span>
+        </h2>
+        <ul>
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#about-text-id">About</a>
+          </li>
+          <li>
+            <a href="#more_conversions">More Conversions</a>
+          </li>
+          <li>
+            <a href="#contacts">Contact</a>
+          </li>
+        </ul>
+        <a href="#" className="btn">
+          Donate <i className="fa-solid fa-heart" />
+        </a>
+      </nav>
+      <div className="content">
+        <h4>Hey there! </h4>
+        <h1>
+          {" "}
+          Convert Word to <span>PDF</span>
+        </h1>
+        <h3>Upload your file right here</h3>
+        <input type="file" className='bg-blue-300 p-5 border border-blue-300 hover:bg-transparent' id="upload-file" >
+          Choose File
+          </input>
+        {/* <button  id="upload_button" className="upload-button">
+          Choose File
+        </button> */}
+        <span id="custom-text">No file chosen, yet.</span>
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              "\n            #custom-text{\n                color:white;\n            }\n        "
+          }}
         />
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+      <img src="/images/feature image.png" className="feature-image" />
+    </div>
+    {/*About Section*/}
+    <section className="about" id="about-text-id">
+      <div className="main">
+        <img src="/images/about_us.png" alt="" className="about_us" />
+        <div className="about-text">
+          <h2>About Us</h2>
+          <h5>
+            Designers &amp; <span>Developers</span>
+          </h5>
+          <p>
+            {" "}
+            We have begun our adventure into developing responsive and innovative
+            websites.
           </p>
+          <form>
+            <a className="button-three" href="https://linktr.ee/josephjohnphilip">
+              Let's Talk
+            </a>
+          </form>
+        </div>
+      </div>
+    </section>
+    {/*Education*/}
+    <div className="service">
+      <div className="title" id="more_conversions">
+        <h2>More Conversions</h2>
+      </div>
+      <div className="box">
+        <div className="card">
+          <i className="fa-solid fa-file-pdf" />
+          <h5> Convert Word to PDF</h5>
+          <div className="para">
+            <p>
+              Convert Word files to PDF for free and quickly using an efficient
+              and dependable algorithm.{" "}
+            </p>
+            <p>
+              <br />
+              <br />
+              <br />
+            </p>
+            <p style={{ textAlign: "center" }}>
+              <a className="button" href="/index.html">
+                Click Here
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className="card">
+          <i className="fa-solid fa-file-word" />
+          <h5> Convert PDF to Word </h5>
+          <div className="para">
+            <p>
+              Convert Word files to PDF for free and quickly using an efficient
+              and dependable algorithm.
+            </p>
+            <p>
+              <br />
+              <br />
+              <br />
+            </p>
+            <p style={{ textAlign: "center" }}>
+              <a className="button" href="/pdftoword.html">
+                Click Here
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className="card">
+          <i className="fa-solid fa-file-lines" />
+          <h5> Convert PPTX to PDF</h5>
+          <div className="para">
+            <p>
+              Convert PPTX files to PDF for free and quickly using an efficient
+              and dependable algorithm.
+            </p>
+            <p>
+              <br />
+              <br />
+              <br />
+            </p>
+            <p style={{ textAlign: "center" }}>
+              <a className="button" href="/pptxtopdf.html">
+                Click Here
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {/*Contact Me*/}
+    <div className="contact">
+      <p>Find Us On</p>
+      <a className="button-two" href="#">
+        {" "}
+        Follow us! It's Free!{" "}
+      </a>
+    </div>
+    {/*footter start*/}
+    <footer>
+      <p>Team Convertify</p>
+      <p> To find about more about us! Click this Links below</p>
+      <div className="social" id="contacts">
+        <a href="#">
+          <i className="fa-brands fa-instagram" />
         </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
+        <a href="#">
+          <i className="fa-brands fa-square-facebook" />
         </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
+        <a href="#">
+          <i className="fa-brands fa-linkedin" />
         </a>
       </div>
-    </main>
+      <p className="end"> CopyRight by Team Convertify</p>
+    </footer>
+  </>
+  
   )
 }
