@@ -18,7 +18,7 @@ export default function Home() {
     formData.append("type", type);
 
     try {
-      const response = await fetch("/api/convert", {
+      const response = await fetch("http://localhost:3001/api/convert", {
         method: "POST",
         body: formData,
       });

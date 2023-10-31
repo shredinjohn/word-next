@@ -13,6 +13,7 @@
     "express-fileupload": "^1.4.1",
     "formidable": "^3.5.1",
     "fs": "^0.0.1-security",
+    "libreoffice": "^0.4.5",
     "libreoffice-convert": "^1.4.1",
     "next": "14.0.0",
     "react": "^18",

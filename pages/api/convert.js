@@ -68,7 +68,8 @@ export default async function convert(req, res) {
     }
 
     // Determine the output file extension based on the 'type'
-    const outputExtension = type === "word" ? "docx" : "pdf";
+    // const outputExtension = type === "pdf" ? "word" : "pdf";
+    const outputExtension = type;
 
     // Generate a unique filename using a timestamp and random string
     const timestamp = new Date().getTime();
