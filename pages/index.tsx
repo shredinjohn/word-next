@@ -1,35 +1,63 @@
 import Image from "next/image";
-
+import { NewtonsCradle } from '@uiball/loaders'
 import { useState } from "react";
 import Link from "next/link";
+import React, { useEffect } from 'react';
 
 export default function Home() {
   const [file, setFile] = useState(null);
   const [convertedFile, setConvertedFile] = useState(null);
   const [type, setType] = useState("word"); // Default to PDF
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (file) {
+      handleConvert();
+    }
+  }, [file]);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
 
   const handleConvert = async () => {
+    setIsLoading(true); // Start loading
+  
     const formData = new FormData();
     formData.append("file", file);
     formData.append("type", type);
-
+  
     try {
       const response = await fetch("http://localhost:3001/api/convert", {
         method: "POST",
         body: formData,
       });
-
+  
       if (response.ok) {
-        console.log("Conversion successful");
+        const json = await response.json();
+  
+        if (json.filename) {
+          const fileResponse = await fetch(`http://localhost:3001/files/${json.filename}`);
+          const blob = await fileResponse.blob();
+  
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = json.filename;
+          link.style.display = 'none';
+          document.body.appendChild(link);
+          link.click();
+  
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(url);
+        }
       } else {
         console.error("Conversion failed");
       }
     } catch (error) {
       console.error("An error occurred:", error);
+    } finally {
+      setIsLoading(false); // End loading
     }
   };
 
@@ -69,21 +97,18 @@ export default function Home() {
             </div>
           </h1>
           <h3>Upload your file right here</h3>
-          <input
-            type="file"
-            className="file:bg-blue-700 file:rounded-md file:p-3 file:border file:border-blue-300 file:hover:bg-transparent"
-            id="upload-file"
-            accept=".pdf, .docx, .pptx"
-            onChange={handleFileChange}
-          />
+          {isLoading ? (
+  <div><NewtonsCradle size={50} color="white" /></div> // Replace this with your loading animation
+) : (
+  <input
+    type="file"
+    className="file:bg-blue-700 file:rounded-md file:p-3 file:border file:border-blue-300 file:hover:bg-blue-200 transition-all duration-500 ease-in-out file:cursor-pointer"
+    id="upload-file"
+    accept=".pdf, .docx, .pptx"
+    onChange={handleFileChange}
+  />
+)}
 
-          <button
-            id="upload_button"
-            className="p-2 rounded-sm bg-blue-900"
-            onClick={handleConvert}
-          >
-            Convert
-          </button>
           {convertedFile && (
             <div>
               <a
@@ -94,7 +119,6 @@ export default function Home() {
               </a>
             </div>
           )}
-          <span id="custom-text">No file chosen, yet.</span>
           <style
             dangerouslySetInnerHTML={{
               __html:
@@ -123,7 +147,7 @@ export default function Home() {
                 className="button-three"
                 href="https://linktr.ee/josephjohnphilip"
               >
-                Let's Talk
+                Let&apos;s Talk
               </a>
             </form>
           </div>
@@ -217,7 +241,7 @@ export default function Home() {
         <p>Find Us On</p>
         <a className="button-two" href="#">
           {" "}
-          Follow us! It's Free!{" "}
+          Follow us! It&apos;s Free!{" "}
         </a>
       </div>
       {/*footter start*/}

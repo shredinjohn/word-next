@@ -4,12 +4,18 @@ import multer from "multer";
 import cors from "cors";
 import { convert } from "libreoffice-convert";
 import { promisify } from "util";
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 
 const convertAsync = promisify(convert);
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/files', express.static(path.join(__dirname, '/')));
 const storage = multer.memoryStorage(); // Store file in memory
 const upload = multer({ storage: storage });
 
@@ -35,11 +41,9 @@ app.post("/api/convert", upload.single("file"), async (req, res) => {
 
     // Determine the output file extension based on the 'type'
     const outputExtension = type === "pdf" ? "docx" : "pdf";
-
-    // Generate a unique filename using a timestamp and random string
-    // const timestamp = new Date().getTime();
-    // const randomString = generateRandomString(8);
-    const uniqueFilename = `output.${outputExtension}`;
+    const originalFilename = path.parse(file.originalname).name;
+    // Generate a unique filename
+    const uniqueFilename = `${originalFilename}.${outputExtension}`;
     // const inputPath = path.join(__dirname, `output.${outputExtension}`);
     const fileBuffer = file.buffer;
 
